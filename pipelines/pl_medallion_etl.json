@@ -1,0 +1,62 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "01_RawDataSetup",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.06:00:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60
+        },
+        "typeProperties": {
+          "notebookId": "<nb_01_raw_data_setup-id>",
+          "workspaceId": "<your-workspace-id>"
+        }
+      },
+      {
+        "name": "02_QualityAndSilver",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "01_RawDataSetup",
+            "dependencyConditions": [ "Succeeded" ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.06:00:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60
+        },
+        "typeProperties": {
+          "notebookId": "<nb_02_quality_silver-id>",
+          "workspaceId": "<your-workspace-id>"
+        }
+      },
+      {
+        "name": "03_SemanticViews",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "02_QualityAndSilver",
+            "dependencyConditions": [ "Succeeded" ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.06:00:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60
+        },
+        "typeProperties": {
+          "notebookId": "<nb_03_semantic_views-id>",
+          "workspaceId": "<your-workspace-id>"
+        }
+      }
+    ],
+    "annotations": [],
+    "concurrency": 1,
+    "parameters": {},
+    "variables": {}
+  }
+}
