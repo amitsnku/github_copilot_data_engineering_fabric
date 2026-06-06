@@ -37,7 +37,7 @@ copilot_fabric_medallion/
 
 | Asset | Name | Purpose |
 |---|---|---|
-| Warehouse | `ou_copilot_dw_poc` | Central Fabric Warehouse hosting all 4 schemas |
+| Warehouse | `copilot_dw_poc` | Central Fabric Warehouse hosting all 4 schemas |
 | Notebook 1 | `nb_01_raw_data_setup` | Generates ~100K synthetic transactions in `raw` schema |
 | Notebook 2 | `nb_02_quality_silver` | Runs 12 quality checks, builds star schema in `silver` |
 | Notebook 3 | `nb_03_semantic_views` | Populates 7 analytics tables in `semantic` schema |
